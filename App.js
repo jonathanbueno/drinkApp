@@ -1,21 +1,67 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import "react-native-gesture-handler";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { Text, ScrollView } from "react-native";
+import { ThemeProvider } from "react-native-elements";
 
-export default function App() {
+import Layout from "./components/Layout/Base";
+import Search from "./pages/Search";
+import Details from "./pages/Details";
+
+function HomeScreen({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ScrollView
+      style={{
+        flex: 1,
+        height: "1000px",
+      }}
+    >
+      <Text onClick={() => navigation.navigate("Search")}>Home Screen</Text>
+    </ScrollView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Stack = createStackNavigator();
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Search"
+            component={Search}
+            options={{
+              title: "",
+              headerStyle: {
+                backgroundColor: "#2ba567",
+                borderColor: "red",
+                borderBottomWidth: "0",
+              },
+              headerTintColor: "#fff",
+            }}
+          />
+          <Stack.Screen
+            name="Details"
+            component={Details}
+            options={{
+              title: "",
+              headerStyle: {
+                backgroundColor: "#2ba567",
+                borderColor: "red",
+                borderBottomWidth: "0",
+              },
+              headerTintColor: "#fff",
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ThemeProvider>
+  );
+}
