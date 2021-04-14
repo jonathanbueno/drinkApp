@@ -3,7 +3,6 @@ import { node } from "prop-types";
 import styled from "styled-components";
 
 import Menu from "../Menu";
-import Logo from "../../Logo";
 
 const Header = styled.header`
   display: flex;
@@ -14,10 +13,7 @@ const Header = styled.header`
 const Layout = ({ children }) => {
   return (
     <>
-      <Header>
-        <Logo />
-        {/* <Menu /> */}
-      </Header>
+      <Header>{/* <Menu /> */}</Header>
       <main>{children}</main>
     </>
   );

@@ -72,11 +72,17 @@ const Search = ({ navigation }) => {
         />
       </div>
       <div style={{ padding: "5%" }}>
-        {search.length > 0 ? (
+        {search?.length > 0 ? (
           search.map((e) => (
             <div
               key={e?.idDrink}
-              style={{ display: "flex", marginBottom: "5%" }}
+              style={{
+                display: "flex",
+                marginBottom: "5%",
+                boxShadow: "0px 0px 13px 0px rgba(50, 50, 50, 0.15)",
+                padding: "5%",
+                borderRadius: "15px",
+              }}
               onClick={() =>
                 navigation.navigate("Details", {
                   drink: e,
