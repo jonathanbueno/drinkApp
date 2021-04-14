@@ -4,7 +4,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { ThemeProvider } from "react-native-elements";
 
-import Layout from "./components/Layout/Base";
 import Search from "./pages/Search";
 import Details from "./pages/Details";
 import Home from "./pages/Home";

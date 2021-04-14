@@ -1,10 +1,25 @@
 import React from "react";
 import { ScrollView } from "react-native";
 import { Badge, Button, Icon, Image, Text } from "react-native-elements";
+import axios from "axios";
 
 import Logo from "../components/UI/Logo";
 
 const Home = ({ navigation }) => {
+  const giveMeRandom = () => {
+    try {
+      axios
+        .get("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+        .then(({ data }) => {
+          navigation.navigate("Details", {
+            drink: data?.drinks[0],
+          });
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <ScrollView
       contentContainerStyle={{
@@ -25,15 +40,14 @@ const Home = ({ navigation }) => {
           display: "flex",
           alignItems: "center",
         }}
+        onClick={() => navigation.navigate("Search")}
       >
         <Icon
           type="font-awesome"
           name="glass"
           containerStyle={{ marginRight: "5%" }}
         />
-        <Text onClick={() => navigation.navigate("Search")}>
-          Search for a Drink
-        </Text>
+        <Text>Search for a Drink</Text>
       </div>
       <div
         style={{
@@ -46,15 +60,14 @@ const Home = ({ navigation }) => {
           marginTop: "5%",
           width: "80%",
         }}
+        onClick={giveMeRandom}
       >
         <Icon
           type="font-awesome"
           name="glass"
           containerStyle={{ marginRight: "5%" }}
         />
-        <Text onClick={() => navigation.navigate("Search")}>
-          Give me a Random Drink
-        </Text>
+        <Text>Give me a Random Drink</Text>
       </div>
     </ScrollView>
   );
