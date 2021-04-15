@@ -40,3 +40,9 @@ yarn web
 
 - Working Search Page without components organization;
 - Details Page is receiving clicked drink data.
+
+# Next Steps:
+
+- Implement styled components instead of inline styles;
+- Improve HTTPS requests approach;
+- Improve UI/UX.
