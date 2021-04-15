@@ -7,7 +7,6 @@ import { ThemeProvider } from "react-native-elements";
 import Search from "./pages/Search";
 import Details from "./pages/Details";
 import Home from "./pages/Home";
-import { isNull } from "lodash";
 
 const Stack = createStackNavigator();
 

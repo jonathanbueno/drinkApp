@@ -4,7 +4,9 @@ import { View } from "react-native";
 
 const customStyles = (type) => {
   const findType = {
-    oneColumn: "column",
+    oneColumn: {
+      flexDirection: "column",
+    },
     twoColumns: {
       flexDirection: "row",
       alignItems: "center",
@@ -31,9 +33,9 @@ const customStyles = (type) => {
   };
 };
 
-const Card = ({ children, style, ...rest }) => {
+const Card = ({ children, style, type, ...rest }) => {
   return (
-    <View style={{ ...customStyles("twoColumns"), ...style }} {...rest}>
+    <View style={{ ...customStyles(type), ...style }} {...rest}>
       {children}
     </View>
   );
