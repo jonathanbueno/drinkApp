@@ -7,7 +7,9 @@ import Card from "../../UI/Card";
 
 const Content = ({ detail }) => {
   const filterIngredients = () =>
-    Object.keys(detail).filter((e) => (e.includes("strIngredient") ? e : null));
+    Object.keys(detail).filter((e) =>
+      detail[e] && e.includes("strIngredient") ? e : null
+    );
 
   return (
     detail && (
@@ -20,7 +22,7 @@ const Content = ({ detail }) => {
       >
         <Text
           h1
-          allowFontScaling
+          adjustsFontSizeToFit
           style={{ fontWeight: "bold", color: "#0a3e1d" }}
         >
           {detail?.strDrink}
@@ -43,7 +45,7 @@ const Content = ({ detail }) => {
         </Card>
         <Text
           h3
-          allowFontScaling
+          adjustsFontSizeToFit
           style={{ marginTop: "5%", fontWeight: "bold", color: "#0a3e1d" }}
         >
           Ingredients:
@@ -55,18 +57,19 @@ const Content = ({ detail }) => {
           }}
           type="oneColumn"
         >
-          {filterIngredients().map(
-            (e) =>
-              detail[e] && (
-                <ListItem key={e}>
-                  <Text>{detail[e]}</Text>
-                </ListItem>
-              )
-          )}
+          {filterIngredients().map((e) => (
+            <ListItem key={e}>
+              <ListItem.Content>
+                <ListItem.Title adjustsFontSizeToFit>
+                  {detail[e]}
+                </ListItem.Title>
+              </ListItem.Content>
+            </ListItem>
+          ))}
         </Card>
         <Text
           h3
-          allowFontScaling
+          adjustsFontSizeToFit
           style={{ marginTop: "5%", fontWeight: "bold", color: "#0a3e1d" }}
         >
           Instructions:
@@ -77,7 +80,7 @@ const Content = ({ detail }) => {
             marginTop: "2.5%",
           }}
         >
-          <Text allowFontScaling>{detail?.strInstructions}</Text>
+          <Text adjustsFontSizeToFit>{detail?.strInstructions}</Text>
         </Card>
       </View>
     )

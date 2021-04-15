@@ -33,7 +33,13 @@ const Header = ({ callBack }) => {
         style={{ marginLeft: "5%", marginRight: "5%", color: "#FFF" }}
       >
         for
-        <Text style={{ color: "#0a3e1d", fontWeight: "bold" }}> Drinks</Text>
+        <Text
+          adjustsFontSizeToFit
+          style={{ color: "#0a3e1d", fontWeight: "bold" }}
+        >
+          {" "}
+          Drinks
+        </Text>
       </Text>
       <SearchInput
         callBack={callBack}
