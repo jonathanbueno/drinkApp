@@ -7,7 +7,6 @@ import axios from "axios";
 
 const SearchInput = ({ ...rest }) => {
   const { callBack = () => {} } = rest;
-  const [value, setValue] = useState("");
 
   const fetchData = (search) => {
     if (!search) return callBack([]);
