@@ -7,6 +7,7 @@ import { ThemeProvider } from "react-native-elements";
 import Search from "./pages/Search";
 import Details from "./pages/Details";
 import Home from "./pages/Home";
+import { isNull } from "lodash";
 
 const Stack = createStackNavigator();
 
@@ -28,8 +29,11 @@ export default function App() {
               headerStyle: {
                 backgroundColor: "#2ba567",
                 borderBottomWidth: "0",
+                borderColor: "#2ba567",
+                shadowColor: "transparent",
               },
               headerTintColor: "#fff",
+              headerBackTitleVisible: false,
             }}
           />
           <Stack.Screen

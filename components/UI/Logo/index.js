@@ -1,12 +1,19 @@
 import React from "react";
-import styled from "styled-components";
-
-const Img = styled.img`
-  margin-left: 0;
-`;
+import { View } from "react-native";
+import { Image } from "react-native-elements";
 
 const Logo = () => {
-  return <Img src={require("../../../static/media/logo.png")} width="170" />;
+  return (
+    <Image
+      source={require("./logo.png")}
+      resizeMode="contain"
+      style={{
+        display: "flex",
+        width: 250,
+        height: 62,
+      }}
+    />
+  );
 };
 
 export default Logo;

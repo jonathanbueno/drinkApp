@@ -1,6 +1,20 @@
 import React from "react";
-import { ActivityIndicator, Dimensions, ScrollView } from "react-native";
-import { Badge, Button, Icon, Image, Text } from "react-native-elements";
+import {
+  ActivityIndicator,
+  Dimensions,
+  FlatList,
+  ScrollView,
+  View,
+  SafeAreaView,
+} from "react-native";
+import {
+  Badge,
+  Button,
+  Icon,
+  Image,
+  Text,
+  ListItem,
+} from "react-native-elements";
 
 const Details = ({ route, navigation }) => {
   const { drink = {} } = route?.params;
@@ -15,12 +29,13 @@ const Details = ({ route, navigation }) => {
     <ScrollView
       style={{
         flex: 1,
-        background: "#FFF",
+        backgroundColor: "#FFF",
       }}
     >
-      <div
+      <View
         style={{
           position: "relative",
+          flex: 1,
         }}
       >
         <Image
@@ -61,8 +76,8 @@ const Details = ({ route, navigation }) => {
             />
           }
         />
-      </div>
-      <div
+      </View>
+      <View
         style={{
           padding: "5%",
           display: "flex",
@@ -76,9 +91,10 @@ const Details = ({ route, navigation }) => {
         >
           {drink?.strDrink}
         </Text>
-        <div
+        <View
           style={{
             display: "flex",
+            flexDirection: "row",
             alignItems: "center",
             marginTop: "2.5%",
             borderRadius: "15px",
@@ -96,7 +112,7 @@ const Details = ({ route, navigation }) => {
             containerStyle={{ marginRight: "2.5%" }}
           />
           <Badge value={drink?.strGlass} />
-        </div>
+        </View>
         <Text
           h3
           allowFontScaling
@@ -104,21 +120,27 @@ const Details = ({ route, navigation }) => {
         >
           Ingredients:
         </Text>
-        <ul
+
+        <View
           style={{
-            listStylePosition: "inside",
-            background: "#FFF",
+            display: "flex",
+            alignItems: "flex-start",
             marginTop: "2.5%",
-            marginBottom: 0,
-            padding: "5%",
             borderRadius: "15px",
+            backgroundColor: "#FFF",
+            padding: "5%",
             boxShadow: "0px 0px 13px 0px rgba(50, 50, 50, 0.15)",
           }}
         >
           {filterIngredients().map(
-            (e) => drink[e] && <li key={e}>{drink[e]}</li>
+            (e) =>
+              drink[e] && (
+                <ListItem key={e}>
+                  <Text>{drink[e]}</Text>
+                </ListItem>
+              )
           )}
-        </ul>
+        </View>
         <Text
           h3
           allowFontScaling
@@ -126,19 +148,21 @@ const Details = ({ route, navigation }) => {
         >
           Instructions:
         </Text>
-        <Text
+        <View
           allowFontScaling
           style={{
+            display: "flex",
+            alignItems: "flex-start",
             marginTop: "2.5%",
+            borderRadius: "15px",
             backgroundColor: "#FFF",
             padding: "5%",
-            borderRadius: "15px",
             boxShadow: "0px 0px 13px 0px rgba(50, 50, 50, 0.15)",
           }}
         >
-          {drink?.strInstructions}
-        </Text>
-      </div>
+          <Text>{drink?.strInstructions}</Text>
+        </View>
+      </View>
     </ScrollView>
   );
 };

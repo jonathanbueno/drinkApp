@@ -1,9 +1,10 @@
 import React from "react";
-import { ScrollView } from "react-native";
-import { Badge, Button, Icon, Image, Text } from "react-native-elements";
+import { ScrollView, View } from "react-native";
+import { Icon, Text } from "react-native-elements";
 import axios from "axios";
 
 import Logo from "../components/UI/Logo";
+import MyCard from "../components/UI/Card";
 
 const Home = ({ navigation }) => {
   const giveMeRandom = () => {
@@ -29,18 +30,13 @@ const Home = ({ navigation }) => {
       }}
     >
       <Logo />
-      <div
+      <MyCard
+        type="twoColumns"
         style={{
-          background: "#FFF",
-          borderRadius: "15px",
-          boxShadow: "0px 0px 13px 0px rgba(50, 50, 50, 0.15)",
-          padding: "5%",
           marginTop: "10%",
           width: "80%",
-          display: "flex",
-          alignItems: "center",
         }}
-        onClick={() => navigation.navigate("Search")}
+        onTouchEnd={() => navigation.navigate("Search")}
       >
         <Icon
           type="font-awesome"
@@ -48,19 +44,14 @@ const Home = ({ navigation }) => {
           containerStyle={{ marginRight: "5%" }}
         />
         <Text>Search for a Drink</Text>
-      </div>
-      <div
+      </MyCard>
+      <MyCard
+        type="twoColumns"
         style={{
-          background: "#FFF",
-          borderRadius: "15px",
-          boxShadow: "0px 0px 13px 0px rgba(50, 50, 50, 0.15)",
-          padding: "5%",
-          display: "flex",
-          alignItems: "center",
           marginTop: "5%",
           width: "80%",
         }}
-        onClick={giveMeRandom}
+        onTouchEnd={giveMeRandom}
       >
         <Icon
           type="font-awesome"
@@ -68,7 +59,7 @@ const Home = ({ navigation }) => {
           containerStyle={{ marginRight: "5%" }}
         />
         <Text>Give me a Random Drink</Text>
-      </div>
+      </MyCard>
     </ScrollView>
   );
 };

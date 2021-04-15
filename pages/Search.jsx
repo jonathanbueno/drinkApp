@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { ActivityIndicator, ScrollView } from "react-native";
+import React, { useState } from "react";
+import { ActivityIndicator, ScrollView, View } from "react-native";
 import { Badge, Image, Text } from "react-native-elements";
 
 import SearchInput from "../components/UI/SearchInput";
+import MyCard from "../components/UI/Card";
 
 const Search = ({ navigation }) => {
   const [search, setSearch] = useState([]);
@@ -10,15 +11,12 @@ const Search = ({ navigation }) => {
   return (
     <ScrollView
       style={{
-        flex: 1,
-        background: "#FFF",
+        backgroundColor: "#FFF",
       }}
     >
-      <div
+      <View
         style={{
-          display: "flex",
-          flexDirection: "column",
-          background: "#2ba567",
+          backgroundColor: "#2ba567",
           borderBottomLeftRadius: "30px",
           borderBottomRightRadius: "30px",
           paddingBottom: "5%",
@@ -41,7 +39,8 @@ const Search = ({ navigation }) => {
           h3
           style={{ marginLeft: "5%", marginRight: "5%", color: "#FFF" }}
         >
-          for <strong style={{ color: "#0a3e1d" }}>Drinks</strong>
+          for
+          <Text style={{ color: "#0a3e1d", fontWeight: "bold" }}> Drinks</Text>
         </Text>
         <SearchInput
           callBack={setSearch}
@@ -51,39 +50,41 @@ const Search = ({ navigation }) => {
             type: "font-awesome",
             name: "search",
             adjustsFontSizeToFit: true,
-            size: "large",
+            size: 18,
             color: "#90939e",
             marginRight: "10%",
           }}
-          style={{ border: "0" }}
           inputContainerStyle={{
-            border: "none",
+            borderColor: "#FFF",
           }}
           containerStyle={{
             width: "90%",
-            background: "#FFF",
+            backgroundColor: "#FFF",
             borderRadius: "15px",
-            border: "0",
-            marginTop: "1rem",
+            borderColor: "transparent",
+            marginTop: "5%",
             marginLeft: "5%",
             marginRight: "5%",
-            height: "50px",
+            height: 50,
           }}
         />
-      </div>
-      <div style={{ padding: "5%" }}>
+      </View>
+      <View
+        style={{
+          padding: "5%",
+          display: "flex",
+        }}
+      >
         {search?.length > 0 ? (
           search.map((e) => (
-            <div
+            <MyCard
               key={e?.idDrink}
               style={{
-                display: "flex",
                 marginBottom: "5%",
-                boxShadow: "0px 0px 13px 0px rgba(50, 50, 50, 0.15)",
-                padding: "5%",
-                borderRadius: "15px",
+                alignItems: "stretch",
+                height: "auto",
               }}
-              onClick={() =>
+              onTouchEnd={() =>
                 navigation.navigate("Details", {
                   drink: e,
                 })
@@ -92,16 +93,17 @@ const Search = ({ navigation }) => {
               <Image
                 source={{ uri: e?.strDrinkThumb }}
                 style={{
-                  width: "95px",
-                  height: "95px",
-                  borderRadius: "15px",
+                  display: "flex",
+                  width: 95,
+                  height: 95,
+                  borderRadius: 15,
                 }}
                 PlaceholderContent={<ActivityIndicator />}
               />
-              <div
+              <View
                 style={{
                   display: "flex",
-                  flexDirection: "column",
+                  flex: 1,
                   justifyContent: "space-between",
                   alignItems: "flex-start",
                   marginLeft: "5%",
@@ -109,15 +111,23 @@ const Search = ({ navigation }) => {
                 }}
               >
                 <Text style={{ fontWeight: "bold" }}>{e?.strDrink}</Text>
-                <Text>{`${e?.strInstructions.substring(0, 50)}...`}</Text>
-                <Badge status="primary" value={e?.strCategory} />
-              </div>
-            </div>
+                <Text>{`${
+                  e?.strInstructions.length > 50
+                    ? e?.strInstructions.substring(0, 50)
+                    : e?.strInstructions
+                }...`}</Text>
+                <Badge
+                  style={{ flex: 1 }}
+                  status="primary"
+                  value={e?.strCategory}
+                />
+              </View>
+            </MyCard>
           ))
         ) : (
-          <div>No drinks found.</div>
+          <Text>No drinks found.</Text>
         )}
-      </div>
+      </View>
     </ScrollView>
   );
 };
