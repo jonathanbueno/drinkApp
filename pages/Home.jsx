@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, View } from "react-native";
+import { ScrollView, TouchableOpacity } from "react-native";
 import { Icon, Text } from "react-native-elements";
 import axios from "axios";
 
@@ -36,7 +36,7 @@ const Home = ({ navigation }) => {
           marginTop: "10%",
           width: "80%",
         }}
-        onTouchEnd={() => navigation.navigate("Search")}
+        onPress={() => navigation.navigate("Search")}
       >
         <Icon
           type="font-awesome"
@@ -51,7 +51,7 @@ const Home = ({ navigation }) => {
           marginTop: "5%",
           width: "80%",
         }}
-        onTouchEnd={giveMeRandom}
+        onPress={giveMeRandom}
       >
         <Icon
           type="font-awesome"

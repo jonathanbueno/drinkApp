@@ -15,7 +15,7 @@ const Item = ({ item, navigation }) => {
           alignItems: "stretch",
           height: "auto",
         }}
-        onTouchEnd={() =>
+        onPress={() =>
           navigation.navigate("Details", {
             drink: item,
           })

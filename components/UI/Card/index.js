@@ -1,6 +1,6 @@
 import React from "react";
 import { node } from "prop-types";
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 
 const customStyles = (type) => {
   const findType = {
@@ -33,11 +33,11 @@ const customStyles = (type) => {
   };
 };
 
-const Card = ({ children, style, type, ...rest }) => {
+const Card = ({ children, style, type, click, ...rest }) => {
   return (
-    <View style={{ ...customStyles(type), ...style }} {...rest}>
+    <TouchableOpacity style={{ ...customStyles(type), ...style }} {...rest}>
       {children}
-    </View>
+    </TouchableOpacity>
   );
 };
 
