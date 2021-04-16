@@ -4,6 +4,7 @@ import { View } from "react-native";
 import { Text } from "react-native-elements";
 
 import SearchInput from "../../../components/UI/SearchInput";
+import ENDPOINTS from "../../../constants/endpoints";
 
 const Header = ({ callBack }) => {
   return (
@@ -43,6 +44,7 @@ const Header = ({ callBack }) => {
       </Text>
       <SearchInput
         callBack={callBack}
+        endpoint={ENDPOINTS.SEARCH_BY_NAME}
         adjustsFontSizeToFit
         placeholder="Type a drink name"
         leftIcon={{

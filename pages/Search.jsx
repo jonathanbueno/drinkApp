@@ -4,6 +4,7 @@ import { Text } from "react-native-elements";
 
 import Header from "../components/Pages/Search/Header";
 import Item from "../components/Pages/Search/Item";
+import { NoResults } from "../components/Pages/Search";
 
 const Search = ({ navigation }) => {
   const [search, setSearch] = useState([]);
@@ -26,7 +27,7 @@ const Search = ({ navigation }) => {
             <Item key={e?.idDrink} item={e} navigation={navigation} />
           ))
         ) : (
-          <Text>No drinks found.</Text>
+          <NoResults {...navigation}></NoResults>
         )}
       </View>
     </ScrollView>

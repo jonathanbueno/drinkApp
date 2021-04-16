@@ -1,26 +1,12 @@
 import React from "react";
-import { ScrollView, TouchableOpacity } from "react-native";
+import { ScrollView } from "react-native";
 import { Icon, Text } from "react-native-elements";
-import axios from "axios";
 
 import Logo from "../components/UI/Logo";
-import MyCard from "../components/UI/Card";
+import Card from "../components/UI/Card";
+import RandomDrink from "../components/Pages/Home/RandomDrink";
 
 const Home = ({ navigation }) => {
-  const giveMeRandom = () => {
-    try {
-      axios
-        .get("https://www.thecocktaildb.com/api/json/v1/1/random.php")
-        .then(({ data }) => {
-          navigation.navigate("Details", {
-            drink: data?.drinks[0],
-          });
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <ScrollView
       contentContainerStyle={{
@@ -30,7 +16,7 @@ const Home = ({ navigation }) => {
       }}
     >
       <Logo />
-      <MyCard
+      <Card
         type="twoColumns"
         style={{
           marginTop: "10%",
@@ -44,22 +30,8 @@ const Home = ({ navigation }) => {
           containerStyle={{ marginRight: "5%" }}
         />
         <Text>Search for a Drink</Text>
-      </MyCard>
-      <MyCard
-        type="twoColumns"
-        style={{
-          marginTop: "5%",
-          width: "80%",
-        }}
-        onPress={giveMeRandom}
-      >
-        <Icon
-          type="font-awesome"
-          name="glass"
-          containerStyle={{ marginRight: "5%" }}
-        />
-        <Text>Give me a Random Drink</Text>
-      </MyCard>
+      </Card>
+      <RandomDrink {...navigation} />
     </ScrollView>
   );
 };
