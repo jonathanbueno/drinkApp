@@ -20,7 +20,7 @@ If you want just to check out the web version, run the following code on your pr
 yarn web
 ```
 
-- P.s: For the web version, resize your window to a mobile size and then refresh it ;)
+- P.s: For the web version, resize your window to a mobile size and then refresh it (F5) ;)
 
 # Commits History:
 
